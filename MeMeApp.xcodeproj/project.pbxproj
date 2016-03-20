@@ -11,7 +11,6 @@
 		2028A0511C78A3C60067027C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028A0501C78A3C60067027C /* ViewController.swift */; };
 		2028A0541C78A3C60067027C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0521C78A3C60067027C /* Main.storyboard */; };
 		2028A0561C78A3C60067027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0551C78A3C60067027C /* Assets.xcassets */; };
-		2028A0591C78A3C60067027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0571C78A3C60067027C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +19,6 @@
 		2028A0501C78A3C60067027C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2028A0531C78A3C60067027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2028A0551C78A3C60067027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2028A0581C78A3C60067027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2028A05A1C78A3C60067027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +56,6 @@
 				2028A0501C78A3C60067027C /* ViewController.swift */,
 				2028A0521C78A3C60067027C /* Main.storyboard */,
 				2028A0551C78A3C60067027C /* Assets.xcassets */,
-				2028A0571C78A3C60067027C /* LaunchScreen.storyboard */,
 				2028A05A1C78A3C60067027C /* Info.plist */,
 			);
 			path = MeMeApp;
@@ -96,6 +93,7 @@
 				TargetAttributes = {
 					2028A04A1C78A3C60067027C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9MWC82Q2BK;
 					};
 				};
 			};
@@ -122,7 +120,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2028A0591C78A3C60067027C /* LaunchScreen.storyboard in Resources */,
 				2028A0561C78A3C60067027C /* Assets.xcassets in Resources */,
 				2028A0541C78A3C60067027C /* Main.storyboard in Resources */,
 			);
@@ -149,14 +146,6 @@
 				2028A0531C78A3C60067027C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2028A0571C78A3C60067027C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2028A0581C78A3C60067027C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -247,10 +236,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MeMeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.MeMeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.memeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -258,10 +250,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MeMeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.MeMeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.memeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -284,6 +279,7 @@
 				2028A05F1C78A3C60067027C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
