@@ -11,6 +11,9 @@
 		2028A0511C78A3C60067027C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028A0501C78A3C60067027C /* ViewController.swift */; };
 		2028A0541C78A3C60067027C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0521C78A3C60067027C /* Main.storyboard */; };
 		2028A0561C78A3C60067027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0551C78A3C60067027C /* Assets.xcassets */; };
+		20925FF21CA318F6006A1E28 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20925FF11CA318F6006A1E28 /* Impact.ttf */; };
+		20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */; };
+		20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF71CA33C60006A1E28 /* MeMe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		2028A0531C78A3C60067027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2028A0551C78A3C60067027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2028A05A1C78A3C60067027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20925FF11CA318F6006A1E28 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
+		20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyTextDelegate.swift; sourceTree = "<group>"; };
+		20925FF71CA33C60006A1E28 /* MeMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,9 @@
 		2028A04D1C78A3C60067027C /* MeMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				20925FF61CA33C52006A1E28 /* Models */,
+				20925FF31CA3254A006A1E28 /* Delegates */,
+				20925FF01CA318C7006A1E28 /* Fonts */,
 				2028A04E1C78A3C60067027C /* AppDelegate.swift */,
 				2028A0501C78A3C60067027C /* ViewController.swift */,
 				2028A0521C78A3C60067027C /* Main.storyboard */,
@@ -59,6 +68,30 @@
 				2028A05A1C78A3C60067027C /* Info.plist */,
 			);
 			path = MeMeApp;
+			sourceTree = "<group>";
+		};
+		20925FF01CA318C7006A1E28 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				20925FF11CA318F6006A1E28 /* Impact.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		20925FF31CA3254A006A1E28 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		20925FF61CA33C52006A1E28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20925FF71CA33C60006A1E28 /* MeMe.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20925FF21CA318F6006A1E28 /* Impact.ttf in Resources */,
 				2028A0561C78A3C60067027C /* Assets.xcassets in Resources */,
 				2028A0541C78A3C60067027C /* Main.storyboard in Resources */,
 			);
@@ -133,6 +167,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2028A0511C78A3C60067027C /* ViewController.swift in Sources */,
+				20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */,
+				20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */,
 				2028A04F1C78A3C60067027C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

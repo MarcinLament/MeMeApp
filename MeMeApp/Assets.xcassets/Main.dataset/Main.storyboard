@@ -5,11 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Impact.ttf">
-            <string>Impact</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--MeMe App-->
         <scene sceneID="tne-QT-ifu">
@@ -44,54 +39,33 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yug-xu-Rt5"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-ir-q3m">
-                                <rect key="frame" x="20" y="80" width="560" height="21"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="1mR-EC-bVM">
-                                <rect key="frame" x="20" y="506" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-ir-q3m">
+                                <rect key="frame" x="25" y="80" width="560" height="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="32"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Gsm-sc-zbd" secondAttribute="trailing" constant="-20" id="031-Oz-2oS"/>
                             <constraint firstItem="Hkh-8H-cpo" firstAttribute="top" secondItem="Gsm-sc-zbd" secondAttribute="bottom" id="6IJ-4M-Spo"/>
-                            <constraint firstItem="1mR-EC-bVM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Aek-9B-jUw"/>
-                            <constraint firstItem="7SM-ir-q3m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BUN-CX-TLK"/>
+                            <constraint firstItem="7SM-ir-q3m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="BUN-CX-TLK"/>
                             <constraint firstItem="Gsm-sc-zbd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="C4Z-2h-Ke5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hkh-8H-cpo" secondAttribute="trailing" constant="-20" id="Mgq-5C-r7u"/>
-                            <constraint firstItem="Hkh-8H-cpo" firstAttribute="top" secondItem="1mR-EC-bVM" secondAttribute="bottom" constant="10" id="QG6-4v-22n"/>
                             <constraint firstItem="7SM-ir-q3m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="U88-7W-hHD"/>
                             <constraint firstItem="Gsm-sc-zbd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hmx-cB-lw6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7SM-ir-q3m" secondAttribute="trailing" id="o1I-lL-lcY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7SM-ir-q3m" secondAttribute="trailing" constant="-5" id="o1I-lL-lcY"/>
                             <constraint firstItem="Hkh-8H-cpo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="oMf-05-NBa"/>
-                            <constraint firstItem="1mR-EC-bVM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pXA-wc-7jg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Hkh-8H-cpo" secondAttribute="bottom" id="vfE-Qs-ZRv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MeMe App" id="IGb-4F-fmZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="nMI-lw-oKy">
-                            <connections>
-                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="7t8-Fd-Xmr"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reset" id="LrM-pK-InA">
-                            <connections>
-                                <action selector="resetViews:" destination="BYZ-38-t0r" id="rM6-D5-O0k"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="nMI-lw-oKy"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomTextField" destination="1mR-EC-bVM" id="v3m-Gq-pOK"/>
                         <outlet property="cameraButton" destination="jFQ-uy-wEw" id="xak-zw-ZXX"/>
-                        <outlet property="imageView" destination="Gsm-sc-zbd" id="a2k-PP-Jao"/>
-                        <outlet property="shareButton" destination="nMI-lw-oKy" id="ScM-cg-h6A"/>
-                        <outlet property="toolbar" destination="Hkh-8H-cpo" id="23T-4k-Fre"/>
-                        <outlet property="topTextField" destination="7SM-ir-q3m" id="4wP-U1-cB7"/>
+                        <outlet property="imgeViewOutlet" destination="Gsm-sc-zbd" id="Xh5-3h-M9M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
