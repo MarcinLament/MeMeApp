@@ -14,6 +14,7 @@
 		20925FF21CA318F6006A1E28 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20925FF11CA318F6006A1E28 /* Impact.ttf */; };
 		20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */; };
 		20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF71CA33C60006A1E28 /* MeMe.swift */; };
+		20AC9E0E1CAD77FE009270F3 /* UIImagePickerController+SupportedOrientations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC9E0D1CAD77FD009270F3 /* UIImagePickerController+SupportedOrientations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		20925FF11CA318F6006A1E28 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
 		20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyTextDelegate.swift; sourceTree = "<group>"; };
 		20925FF71CA33C60006A1E28 /* MeMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMe.swift; sourceTree = "<group>"; };
+		20AC9E0D1CAD77FD009270F3 /* UIImagePickerController+SupportedOrientations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+SupportedOrientations.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		2028A04D1C78A3C60067027C /* MeMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				20AC9E0C1CAD77EE009270F3 /* Extensions */,
 				20925FF61CA33C52006A1E28 /* Models */,
 				20925FF31CA3254A006A1E28 /* Delegates */,
 				20925FF01CA318C7006A1E28 /* Fonts */,
@@ -92,6 +95,14 @@
 				20925FF71CA33C60006A1E28 /* MeMe.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		20AC9E0C1CAD77EE009270F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20AC9E0D1CAD77FD009270F3 /* UIImagePickerController+SupportedOrientations.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 				20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */,
 				20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */,
 				2028A04F1C78A3C60067027C /* AppDelegate.swift in Sources */,
+				20AC9E0E1CAD77FE009270F3 /* UIImagePickerController+SupportedOrientations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.memeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -293,6 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lammar.memeapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

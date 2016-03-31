@@ -47,15 +47,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeWidthAttributeName : -4
         ]
         
-        self.topTextField.defaultTextAttributes = memeTextAttributes
-        self.topTextField.textAlignment = .Center
-        self.topTextField.delegate = modifyTextDelegate
-        self.topTextField.tag = 0
-        
-        self.bottomTextField.defaultTextAttributes = memeTextAttributes
-        self.bottomTextField.textAlignment = .Center
-        self.bottomTextField.delegate = modifyTextDelegate
-        self.bottomTextField.tag = 1
+        setTextFieldProperties(self.topTextField, attributes: memeTextAttributes, tag: 0)
+        setTextFieldProperties(self.bottomTextField, attributes: memeTextAttributes, tag: 1)
+    }
+    
+    func setTextFieldProperties(textField: UITextField, attributes: [String: AnyObject], tag: Int){
+        textField.defaultTextAttributes = attributes
+        textField.textAlignment = .Center
+        textField.delegate = modifyTextDelegate
+        textField.tag = tag
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
@@ -92,6 +92,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+        UIInterfaceOrientationMask.All
     }
     
     @IBAction func takePicture(sender: AnyObject) {
@@ -134,8 +136,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func subscribeToKeyboardNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotification(){
@@ -143,8 +145,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        topTextField.resignFirstResponder()
+        bottomTextField.resignFirstResponder()
+    }
+    
     func save() {
-        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
