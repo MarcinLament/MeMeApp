@@ -154,21 +154,45 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(MemeEditorViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+//        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(MemeEditorViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        let helper = MRPhotosHelper()
+        
+        // save the image to library
+        helper.saveImageAsAsset(meme.memedImage, completion: { (localIdentifier) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                if(localIdentifier != nil){
+                    self.meme.imageLocalIdentifier = localIdentifier;
+                    
+                    //add saved meme to the collection
+                    let object = UIApplication.sharedApplication().delegate
+                    let appDelegate = object as! AppDelegate
+                    appDelegate.addNewMeme(self.meme)
+                    
+                    let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                }else{
+                    let ac = UIAlertController(title: "Save error", message: "Problem saving the image", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                }
+                
+                self.activityViewController.dismissViewControllerAnimated(true, completion: nil)
+            })
+
+        })
     }
-    
-    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
-        if error == nil {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
-        } else {
-            let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
-        }
-        self.activityViewController.dismissViewControllerAnimated(true, completion: nil)
-    }
+//
+//    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+//        if error == nil {
+//            
+//            
+//        } else {
+//            
+//        }
+//        
+//    }
     
     func generateMemedImage() -> UIImage{
         self.navigationController?.navigationBar.hidden = true
@@ -186,6 +210,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.toolbar.hidden = false
         
         return memedImage
+    }
+    
+    func randomString(length: Int) -> String {
+        let charactersString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let charactersArray : [Character] = Array(charactersString.characters)
+        
+        var string = ""
+        for _ in 0..<length {
+            string.append(charactersArray[Int(arc4random()) % charactersArray.count])
+        }
+        
+        return string
     }
 }
 

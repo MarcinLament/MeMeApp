@@ -12,11 +12,39 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var memes: [MeMe]!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //load memes from disk
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let savedMemes = defaults.objectForKey("memes") as? NSData {
+            memes = NSKeyedUnarchiver.unarchiveObjectWithData(savedMemes) as! [MeMe]
+        }
+        
+        if(memes == nil){
+            memes = [MeMe]()
+        }
+//        else{
+//            let helper = MRPhotosHelper()
+//            helper.retrieveImageWithIdentifer(memes, completion: { (memes) -> Void in
+//                print("Received memes: " + String(memes.count))
+//            })
+//        }
+        
+        print("Loaded memes: " + String(memes.count));
+        
         return true
+    }
+    
+    func addNewMeme(meme: MeMe){
+        memes.append(meme)
+        
+        let savedData = NSKeyedArchiver.archivedDataWithRootObject(memes)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(savedData, forKey: "memes")
+        print("Saved memes");
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -11,6 +11,8 @@
 		2028A0511C78A3C60067027C /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028A0501C78A3C60067027C /* MemeEditorViewController.swift */; };
 		2028A0541C78A3C60067027C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0521C78A3C60067027C /* Main.storyboard */; };
 		2028A0561C78A3C60067027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2028A0551C78A3C60067027C /* Assets.xcassets */; };
+		203291A21CB6CE5900FAEEB9 /* MRPhotosHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203291A11CB6CE5900FAEEB9 /* MRPhotosHelper.swift */; };
+		203291A41CB6E37400FAEEB9 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203291A31CB6E37400FAEEB9 /* MemeTableViewController.swift */; };
 		20925FF21CA318F6006A1E28 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20925FF11CA318F6006A1E28 /* Impact.ttf */; };
 		20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */; };
 		20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925FF71CA33C60006A1E28 /* MeMe.swift */; };
@@ -24,6 +26,8 @@
 		2028A0531C78A3C60067027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2028A0551C78A3C60067027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2028A05A1C78A3C60067027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		203291A11CB6CE5900FAEEB9 /* MRPhotosHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRPhotosHelper.swift; sourceTree = "<group>"; };
+		203291A31CB6E37400FAEEB9 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
 		20925FF11CA318F6006A1E28 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
 		20925FF41CA32586006A1E28 /* ModifyTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyTextDelegate.swift; sourceTree = "<group>"; };
 		20925FF71CA33C60006A1E28 /* MeMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeMe.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		2028A04D1C78A3C60067027C /* MeMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				203291A01CB6CE4900FAEEB9 /* Helpers */,
 				20AC9E0C1CAD77EE009270F3 /* Extensions */,
 				20925FF61CA33C52006A1E28 /* Models */,
 				20925FF31CA3254A006A1E28 /* Delegates */,
@@ -69,8 +74,17 @@
 				2028A0521C78A3C60067027C /* Main.storyboard */,
 				2028A0551C78A3C60067027C /* Assets.xcassets */,
 				2028A05A1C78A3C60067027C /* Info.plist */,
+				203291A31CB6E37400FAEEB9 /* MemeTableViewController.swift */,
 			);
 			path = MeMeApp;
+			sourceTree = "<group>";
+		};
+		203291A01CB6CE4900FAEEB9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				203291A11CB6CE5900FAEEB9 /* MRPhotosHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		20925FF01CA318C7006A1E28 /* Fonts */ = {
@@ -178,8 +192,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2028A0511C78A3C60067027C /* MemeEditorViewController.swift in Sources */,
+				203291A41CB6E37400FAEEB9 /* MemeTableViewController.swift in Sources */,
 				20925FF81CA33C60006A1E28 /* MeMe.swift in Sources */,
 				20925FF51CA32586006A1E28 /* ModifyTextDelegate.swift in Sources */,
+				203291A21CB6CE5900FAEEB9 /* MRPhotosHelper.swift in Sources */,
 				2028A04F1C78A3C60067027C /* AppDelegate.swift in Sources */,
 				20AC9E0E1CAD77FE009270F3 /* UIImagePickerController+SupportedOrientations.swift in Sources */,
 			);
