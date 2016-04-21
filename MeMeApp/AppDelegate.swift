@@ -26,14 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(memes == nil){
             memes = [MeMe]()
         }
-//        else{
-//            let helper = MRPhotosHelper()
-//            helper.retrieveImageWithIdentifer(memes, completion: { (memes) -> Void in
-//                print("Received memes: " + String(memes.count))
-//            })
-//        }
-        
-        print("Loaded memes: " + String(memes.count));
         
         return true
     }
@@ -44,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let savedData = NSKeyedArchiver.archivedDataWithRootObject(memes)
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(savedData, forKey: "memes")
-        print("Saved memes");
     }
 
     func applicationWillResignActive(application: UIApplication) {

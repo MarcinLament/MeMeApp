@@ -50,34 +50,4 @@ class MRPhotosHelper {
             completion(meme: meme)
         }
     }
-    
-//    func retrieveImageWithIdentifer(memes: [MeMe], completion: (memes: [MeMe]) -> Void) {
-//        
-//        var localIdentifiers = [String]()
-//        for meme:MeMe in memes {
-//            localIdentifiers.append(meme.imageLocalIdentifier)
-//        }
-//        
-//        print("localIdentifiers: " + String(localIdentifiers.count))
-//        
-//        let fetchOptions = PHFetchOptions()
-//        fetchOptions.predicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.Image.rawValue)
-//        let fetchResults = PHAsset.fetchAssetsWithLocalIdentifiers(localIdentifiers, options: fetchOptions)
-//        
-//        print("fetchResults: " + String(fetchResults.count))
-//        for index in 0...fetchResults.count - 1 {
-//            if let imageAsset = fetchResults.objectAtIndex(index) as? PHAsset {
-//                let requestOptions = PHImageRequestOptions()
-//                requestOptions.deliveryMode = .HighQualityFormat
-//                manager.requestImageForAsset(imageAsset, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFill, options: requestOptions, resultHandler: { (image, info) -> Void in
-//                    print("loaded image")
-////                    completion(image: image)
-//                })
-//            } else {
-////                completion(image: nil)
-//            }
-//        }
-//        print("finished")
-//        completion(memes: memes)
-//    }
 }

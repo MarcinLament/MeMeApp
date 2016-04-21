@@ -31,7 +31,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        
         subscribeToKeyboardNotifications()
     }
     
@@ -56,6 +55,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.textAlignment = .Center
         textField.delegate = modifyTextDelegate
         textField.tag = tag
+    }
+    
+    @IBAction func closeEditor(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
@@ -154,8 +157,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-//        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(MemeEditorViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
-        
         let helper = MRPhotosHelper()
         
         // save the image to library
@@ -168,9 +169,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                     let object = UIApplication.sharedApplication().delegate
                     let appDelegate = object as! AppDelegate
                     appDelegate.addNewMeme(self.meme)
-                    
+
                     let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    
                     self.presentViewController(ac, animated: true, completion: nil)
                 }else{
                     let ac = UIAlertController(title: "Save error", message: "Problem saving the image", preferredStyle: .Alert)
@@ -183,16 +187,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
         })
     }
-//
-//    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
-//        if error == nil {
-//            
-//            
-//        } else {
-//            
-//        }
-//        
-//    }
     
     func generateMemedImage() -> UIImage{
         self.navigationController?.navigationBar.hidden = true
@@ -210,18 +204,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.toolbar.hidden = false
         
         return memedImage
-    }
-    
-    func randomString(length: Int) -> String {
-        let charactersString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let charactersArray : [Character] = Array(charactersString.characters)
-        
-        var string = ""
-        for _ in 0..<length {
-            string.append(charactersArray[Int(arc4random()) % charactersArray.count])
-        }
-        
-        return string
     }
 }
 
