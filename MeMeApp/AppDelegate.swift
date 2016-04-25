@@ -32,10 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func addNewMeme(meme: MeMe){
         memes.append(meme)
-        
+        saveMemes();
+    }
+    
+    func removeMeme(position: Int){
+        memes.removeAtIndex(position)
+        saveMemes();
+    }
+    
+    func saveMemes(){
         let savedData = NSKeyedArchiver.archivedDataWithRootObject(memes)
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(savedData, forKey: "memes")
+
     }
 
     func applicationWillResignActive(application: UIApplication) {

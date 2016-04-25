@@ -46,8 +46,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             NSStrokeWidthAttributeName : -4
         ]
         
-        setTextFieldProperties(self.topTextField, attributes: memeTextAttributes, tag: 0)
-        setTextFieldProperties(self.bottomTextField, attributes: memeTextAttributes, tag: 1)
+        setTextFieldProperties(topTextField, attributes: memeTextAttributes, tag: 0)
+        setTextFieldProperties(bottomTextField, attributes: memeTextAttributes, tag: 1)
     }
     
     func setTextFieldProperties(textField: UITextField, attributes: [String: AnyObject], tag: Int){
@@ -58,24 +58,24 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func closeEditor(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil);
+        dismissViewControllerAnimated(true, completion: nil);
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
         //Create the meme
-        self.meme = MeMe( topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage:
+        meme = MeMe( topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage:
             imageView.image!, memedImage: generateMemedImage())
         
-        let activityItem: [AnyObject] = [self.meme.memedImage as AnyObject]
-        self.activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
+        let activityItem: [AnyObject] = [meme.memedImage as AnyObject]
+        activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
         
         if(UIDevice.currentDevice().userInterfaceIdiom == .Pad){
-            activityViewController.popoverPresentationController?.barButtonItem = self.shareButton
+            activityViewController.popoverPresentationController?.barButtonItem = shareButton
         }
         
-        self.presentViewController(self.activityViewController, animated: true, completion: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
 
-        self.activityViewController.completionWithItemsHandler = { activity, success, items, error in
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
             if success {
                 self.save()
                 return
@@ -84,8 +84,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func resetViews(){
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
         shareButton.enabled = false;
     }
     
@@ -124,14 +124,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(notification: NSNotification){
-        if(self.bottomTextField.editing){
-            self.view.frame.origin.y = getKeyboardHeight(notification) * -1
+        if(bottomTextField.editing){
+            view.frame.origin.y = getKeyboardHeight(notification) * -1
         }
     }
     
     func keyboardWillHide(notification: NSNotification){
-        if(self.bottomTextField.editing){
-            self.view.frame.origin.y = 0
+        if(bottomTextField.editing){
+            view.frame.origin.y = 0
         }
     }
     
@@ -170,16 +170,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                     let appDelegate = object as! AppDelegate
                     appDelegate.addNewMeme(self.meme)
 
-                    let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                    self.showAlert("Saved!", message: "Your altered image has been saved to your photos.", completion: { (action: UIAlertAction) in
                         self.dismissViewControllerAnimated(true, completion: nil)
-                    }))
+                    })
                     
-                    self.presentViewController(ac, animated: true, completion: nil)
                 }else{
-                    let ac = UIAlertController(title: "Save error", message: "Problem saving the image", preferredStyle: .Alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(ac, animated: true, completion: nil)
+                    self.showAlert("Save error", message: "Problem saving the image", completion: nil)
                 }
                 
                 self.activityViewController.dismissViewControllerAnimated(true, completion: nil)
@@ -189,19 +185,19 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func generateMemedImage() -> UIImage{
-        self.navigationController?.navigationBar.hidden = true
-        self.toolbar.hidden = true
+        navigationController?.navigationBar.hidden = true
+        toolbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame,
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.navigationController?.navigationBar.hidden = false
-        self.toolbar.hidden = false
+        navigationController?.navigationBar.hidden = false
+        toolbar.hidden = false
         
         return memedImage
     }

@@ -23,17 +23,19 @@ class MemeCollectionViewController: UICollectionViewController{
         super.viewDidLoad()
         
         let space: CGFloat = 5.0
-        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        setFlowLayoutSize(space, dimension: dimension)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         let space: CGFloat = 5.0
         let dimension = (size.width - (2 * space)) / 3.0
         
+        setFlowLayoutSize(space, dimension: dimension)
+    }
+    
+    func setFlowLayoutSize(space: CGFloat, dimension: CGFloat){
         if(flowLayout != nil){
             flowLayout.minimumInteritemSpacing = space
             flowLayout.minimumLineSpacing = space
@@ -43,19 +45,19 @@ class MemeCollectionViewController: UICollectionViewController{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.hidden = false
-        self.collectionView!.reloadData()
+        tabBarController?.tabBar.hidden = false
+        collectionView!.reloadData()
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MeMeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
-        let meme = self.memes[indexPath.row]
+        let meme = memes[indexPath.row]
         
         if(meme.memedImage == nil){
             meme.memedImage = UIImage(named: "Placeholder")
@@ -74,9 +76,9 @@ class MemeCollectionViewController: UICollectionViewController{
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath){
         
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MeMeDetailViewController") as! MemeDetailViewController
-        detailController.meme = self.memes[indexPath.row]
-        self.navigationController!.pushViewController(detailController, animated: true)
+        let detailController = storyboard!.instantiateViewControllerWithIdentifier("MeMeDetailViewController") as! MemeDetailViewController
+        detailController.meme = memes[indexPath.row]
+        navigationController!.pushViewController(detailController, animated: true)
         
     }
 
